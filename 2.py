@@ -1,8 +1,18 @@
 import csv
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.special as sci
+import requests as r
+
+url = 'https://jenyay.net/uploads/Student/Modelling/task_02.csv'
+
+try:
+    res = r.get(url)
+
+    with open("task_02.csv", "wb") as file:
+        file.write(res.content)
+except Exception as _ex:
+    print('Someting went wrong')
 
 data = []
 
@@ -55,9 +65,9 @@ for i in range(count):
     epr.append((c ** 2 / (np.pi * flist[i] ** 2)) * (abs(func[i]) ** 2))
     lam.append(c/flist[i])
 
-flist1 = flist.tolist()
-
 plt.plot(flist, epr)
+plt.ylabel("RCS, В")
+plt.xlabel("Частота, ГГц")
 plt.show()
 
 import json
