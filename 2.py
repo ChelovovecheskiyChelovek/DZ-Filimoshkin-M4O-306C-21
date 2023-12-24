@@ -1,8 +1,12 @@
 import csv
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.special as sci
 import requests as r
+
+if not os.path.exists("result"):
+    os.mkdir("result")
 
 url = 'https://jenyay.net/uploads/Student/Modelling/task_02.csv'
 
@@ -66,7 +70,7 @@ for i in range(count):
     lam.append(c/flist[i])
 
 plt.plot(flist, epr)
-plt.ylabel("RCS, В")
+plt.ylabel("ЭПР, $м^2$")
 plt.xlabel("Частота, ГГц")
 plt.show()
 
@@ -80,5 +84,5 @@ for i in range(count):
                        "rsc": epr[i]
                        })
 
-with open("data2.json", "w") as file:
+with open("result/data2.json", "w") as file:
     json.dump({"data": resultData}, file)
