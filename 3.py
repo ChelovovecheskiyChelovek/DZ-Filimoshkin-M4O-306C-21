@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 '''
 Моделирование отражения гармонического сигнала от слоя диэлектрика
 '''
-
 import math
 import numpy as np
 import numpy.typing as npt
