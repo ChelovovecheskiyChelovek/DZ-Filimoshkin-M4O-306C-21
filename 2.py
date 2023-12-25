@@ -71,7 +71,7 @@ for i in range(count):
 
 plt.plot(flist, epr)
 plt.ylabel("ЭПР, $м^2$")
-plt.xlabel("Частота, ГГц")
+plt.xlabel("Частота, Гц")
 plt.show()
 
 import json
