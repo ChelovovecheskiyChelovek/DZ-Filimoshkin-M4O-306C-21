@@ -1,6 +1,7 @@
 '''
 Моделирование отражения гармонического сигнала от слоя диэлектрика
 '''
+
 import math
 import numpy as np
 import numpy.typing as npt
@@ -115,7 +116,7 @@ class SourceTFSF(Source1D):
         return (self.Sc / np.sqrt(self.eps * self.mu)) * self.source.getE(self.sourcePos - 0.5, time + 0.5)
 
 
-class GaussianDiffPlaneWave(SourcePlaneWave):
+class VelvetRick(SourcePlaneWave):
     '''
     Источник, создающий Вейвлет Рикера
     '''
@@ -424,7 +425,7 @@ if __name__ == '__main__':
     Np = Sc / (fr*dt)
     Md = 1
 
-    signal = GaussianDiffPlaneWave(magnitude, Np, Md, dt)
+    signal = VelvetRick(magnitude, Np, Md, dt)
     source = SourceTFSF(signal, 0.0, Sc, eps[sourcePos], mu[sourcePos])
     # source = sources.Harmonic.make_continuous(magnitude, f_Hz, dt, Sc)
 
